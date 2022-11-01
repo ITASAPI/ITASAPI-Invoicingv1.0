@@ -38,7 +38,7 @@ Invoicing Processes
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
 |ContractId|Contract ID|`string`|10||Required|
-|InvoiceDate|Invoice Date|`datetime`||Required|
+|InvoiceDate|Invoice Date|`datetime`|||Required|
 |ValueDate|Value Date|`datetime`|||Required|
 |Quantity|Quantity|`decimal`|||Required|
 |InvoiceCurrencyCode|Invoice Currency Code|`string`|3||Required|
@@ -46,9 +46,9 @@ Invoicing Processes
 |InvoiceValue|Invoice Value|`decimal`|||Required|
 |VatValue|VAT Value|`decimal`|||Required|
 |IsSecure|Is Secure|`boolean`||||
-|PaymentMode|Payment Mode|`string`||||
-|ClientReference|Client Reference|`string`||||
-|Narrative|Narrative|`string`||||
+|PaymentMode|Payment Mode|`string`|1|||
+|ClientReference|Client Reference|`string`|25|||
+|Narrative|Narrative|`string`|30|||
 |AuthoriseForPosting|Authorise For Posting|`boolean`||||
 |Costs|see <b><a href="/#reference/data-object-definitions/cost/cost">Cost</a></b> object|[array] of `object`||||
 
