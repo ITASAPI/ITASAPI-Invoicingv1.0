@@ -10,7 +10,7 @@ VERSION: 1.0
 ## New Endpoints
 
 <ul>
-<li>Invoicing <b>INVFEED Style</b>: INVFEED Style invoicing pilot,<a href="/#reference/invoicing/invfeed-style"> Link</a></li>
+<li>Invoicing <b>Sales</b>: Sales invoicing pilot,<a href="/#reference/invoicing/invfeed-style"> Link</a></li>
 </ul>
 
 ## Updated Endpoints
@@ -29,10 +29,10 @@ Model Header containing AccessToken
 # Group Invoicing
 Invoicing Processes
 
-## INVFEED Style [/Invoicing/{TradingEntityId}/INVFEED]
-`POST` INVFEED Style invoicing pilot
+## Sales [/Invoicing/{TradingEntityId}/Trade/Sales]
+`POST` Sales Invoicing Pilot
 
-### Create Invoice INVFEED Style [POST]
+### Create Sales Invoice [POST]
 
 <b>Request Body</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
@@ -67,7 +67,7 @@ Invoicing Processes
 
             AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
 
-    + Attributes (CreateInvFeed)
+    + Attributes (CreateInvSales)
 
 + Response 201 (application/json; charset=utf-8)
     + Attributes 
@@ -208,7 +208,7 @@ A multipurpose object used by several endpoints.
 + CostValueCostCcy: `400.15` (number)
 + CostAccountCode: 0001.0000 (string)
 
-## CreateInvFeed (object)
+## CreateInvSales (object)
 + ContractId: S00001.000 (string)
 + InvoiceDate: `2022-06-22T00:00:00Z` (string)
 + ValueDate: `2022-06-22T00:00:00Z` (string)
