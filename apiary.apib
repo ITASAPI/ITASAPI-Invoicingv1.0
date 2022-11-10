@@ -83,9 +83,76 @@ Invoicing Processes
 + Response 405 (application/json; charset=utf-8)
     + Attributes (405 Response)
 
+## Create Manual [/Invoicing/{TradingEntityId}/Manual/Invoice]
+`POST` Manual Ivoice
+
+### Create Manual Invoice [POST]
+
+<b>Request Body</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|DocumentBody|see <b><a href="/#reference/data-object-definitions/documentdetails/documentdetails">Document Details</a></b> object|`object`|||Required|
+|AccountDetails|see <b><a href="/#reference/data-object-definitions/accountpostingdetails/accountpostingdetails">Account Posting Details</a></b> object|[array] of `object`|||Required|
+
+<hr />
+
+<b>Response Data</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|InvoiceReference|Invoice Reference|`string`||||
+
++ Parameters
+    + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Attributes (CreateManualInvoice)
+
++ Response 201 (application/json; charset=utf-8)
+    + Attributes 
+        + Data (InvoiceRefResponse)
+        + Response (201 CreateResponse)
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 Response)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
++ Response 405 (application/json; charset=utf-8)
+    + Attributes (405 Response)
+
 
 # Group Data Object Definitions
 List of re-usable Data Objects referenced as `object` types. Not that these endpoints are not accessable and only here for reference purposes.
+
+## AccountDetails [/AccountDetails]
+A multipurpose object used by several endpoints
+### AccountDetails[GET]
+
+
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|AccountCode|Account Code|`string`|11||Required|
+|AccountLedgerType|Account Ledger Type|`string`|1||Required. `C`, `N` or `K`|
+|ExpenseCode|Expense Code|`string`|7||Required|
+|DepartmentCode|Department Code|`string`|4||Required|
+|AmountInDocumentCurrency|Amount in Document Currency|`decimal`||Can Contain Negative Values|Required|
+|AmountInInvoiceCurrency|Amount in Invoice Currency|`decimal`||Can Contain Negative Values||
+|AmountInFunctionalCurrency|Amount in Functional Currency|`decimal`||Can Contain Negative Values||
+|VatCode|Vat Code|`string`|2|||
+|Narrative|Narrative|`string`|30|||
+|SecondaryReference|Secondary Reference|`string`|10|||
+|Memo|Contract Reference|`string`|100|||
+|FreeField|Client Reference|`string`|10|||
+|PersonalInits|Client Reference|`string`|3|||
+
+
++ Response 200 (application/json; charset=utf-8)
++ Attributes (AccountDetailsVat)
 
 ## Cost [/Costs]
 A multipurpose object used by several endpoints. 
@@ -105,6 +172,26 @@ A multipurpose object used by several endpoints.
 
 + Response 200 (application/json; charset=utf-8)
 + Attributes (Cost)
+
+
+## DocumentBody [/DocumentBody]
+A multipurpose object used by several endpoints
+### DocumentBody[GET]
+
+
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|DocumentDate|Document Date|`datetime`|20||Required|
+|ValueDate|Value Date|`datetime`|20||Required|
+|ReceivedDate|Received Date|`datetime`|20||Required|
+|DocumentCurrencyCode|Document Currency|`string`|3||Required|
+|NarrativeCurrencyCode|Narrative Currency|`string`|3|||
+|FunctionalCurrencyCode|Functional Currency|`string`|3|||
+|SecondaryReference|Secondary Reference|`string`|10|||
+|DepartmentCode|Department Code|`string`|4|||
+|ClientReference|Client Reference|`string`|30|||
+|PaymentTermsCode|Payment Terms Code|`string`|8|||
+|PaymentModeCode|Payment Mode Code|`string`|1|||
 
 
 # Data Structures
@@ -199,6 +286,50 @@ A multipurpose object used by several endpoints.
 ## accessToken (object)
 + Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg 
 
+## AccountDetailsClient (object)
++ AccountCode: POSTEIT.P (string)
++ AccountLedgerType: C (string)
++ ExpenseCode: MISC (string)
++ DepartmentCode: GEN (string)
++ AssociateClientCode: ASSOCCLI.P (string)
++ AmountInDocumentCurrency: `-1.02` (number)
++ AmountInNarrativeCurrency: `-1.20` (number)
++ AmountInFunctionalCurrency: `-1.02` (number)
++ Narrative: STAMPA POSTA 4ONLINE GIU22 (string)
++ SecondaryReference: 3220336229 (string)
++ Memo: Add Memo Here (string)
++ FreeField: 0123456789 (string)
++ PersonalInits: RDG (string)
+
+## AccountDetailsNominal (object)
++ AccountCode: 7150.0080 (string)
++ AccountLedgerType: N (string)
++ ExpenseCode: MISC (string)
++ DepartmentCode: GEN (string)
++ AmountInDocumentCurrency: 0.84 (number)
++ AmountInNarrativeCurrency: 1.04 (number)
++ AmountInFunctionalCurrency: 0.84 (number)
++ Narrative: STAMPA POSTA 4ONLINE GIU22 (string)
++ SecondaryReference: 3220336229 (string)
++ Memo: Add Memo Here (string)
++ FreeField: 0123456789 (string)
++ PersonalInits: RDG (string)
+
+## AccountDetailsVat (object)
++ AccountCode: 2141.0010 (string)
++ AccountLedgerType: N (string)
++ ExpenseCode: MISC (string)
++ DepartmentCode: GEN (string)
++ AmountInDocumentCurrency: 0.18 (number)
++ AmountInNarrativeCurrency: 0.16 (number)
++ AmountInFunctionalCurrency: 0.18 (number)
++ VatCode: 22 (string)
++ Narrative: STAMPA POSTA 4ONLINE GIU22 (string)
++ SecondaryReference: 3220336229 (string)
++ Memo: Add Memo Here (string)
++ FreeField: 0123456789 (string)
++ PersonalInits: RDG (string)
+
 ## Cost (object)
 + CostCode: QUALITY (string)
 + CurrencyCode: EUR (string)
@@ -223,6 +354,24 @@ A multipurpose object used by several endpoints.
 + Narrative: 22881 205 per metric ton (string)
 + AuthoriseForPosting: true (boolean)
 + Costs (array [Cost])
+
+## CreateManualInvoice (object)
++ DocumentBody (required, DocumentBody)
++ AccountDetails (required, array [AccountDetailsClient, AccountDetailsNominal])
+
+
+## DocumentBody (object)
++ DocumentDate: `2022-08-10T00:00:00Z` (string)
++ ValueDate: `2022-08-10T00:00:00Z` (string)
++ ReceivedDate: `2022-08-10T00:00:00Z` (string)
++ DocumentCurrencyCode: EUR (string)
++ NarrativeCurrencyCode: USD (string)
++ FunctionalCurrencyCode: EUR (string)
++ SecondaryReference: 3220336229 (string)
++ DepartmentCode: GEN (string)
++ ClientReference: 3220336229 (string)
++ PaymentTermsCode: 30DFBB (string)
++ PaymentMode: P (string)
 
 ## InvoiceRefResponse (object)
 + InvoiceReference: SI2200001
