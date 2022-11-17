@@ -88,8 +88,8 @@ Trade Invoicing Processes
 |ValueDate|Value Date|`datetime`|||Required|
 |Quantity|Quantity|`decimal`|||Required|
 |InvoiceCurrencyCode|Invoice Currency Code|`string`|3||Required|
-|InvoiceRate|Invoice Rate|`decimal`|||Required|
 |InvoiceValue|Invoice Value|`decimal`|||Required|
+|VatRateCode|Vat Rate Code|`string`|2||Required|
 |VatValue|VAT Value|`decimal`|||Required|
 |IsSecure|Is Secure|`boolean`||||
 |PaymentMode|Payment Mode|`string`|1|||
@@ -170,9 +170,8 @@ A multipurpose object used by several endpoints.
 |CurrencyCode|Currency Code|`string`|3||Required|
 |ExpenseCode|Expense Code|`string`|7||Required|
 |SupplierCode|Supplier Code|`string`|10||Required|
-|CostValueInvCcy|Cost Value in Invoice Ccy|`decimal`||Negative if Payable|Required|
+|CostValueInvoiceCcy|Cost Value in Invoice Ccy|`decimal`||Negative if Payable|Required|
 |CostValueCostCcy|Cost Value in Cost Ccy|`decimal`||Negative if Payable|Required|
-|CostAccountCode|Cost Account Code|`string`|9|||
 
 
 + Response 200 (application/json; charset=utf-8)
@@ -341,9 +340,8 @@ A multipurpose object used by several endpoints
 + CurrencyCode: EUR (string)
 + ExpenseCode: STOCK (string)
 + SupplierCode: UMTRAD.P (string)
-+ CostValueInvCcy: `316.25` (number) 
++ CostValueInvoiceCcy: `316.25` (number) 
 + CostValueCostCcy: `400.15` (number)
-+ CostAccountCode: 0001.0000 (string)
 
 ## CreateInvSales (object)
 + ContractId: S00001.000 (string)
@@ -351,8 +349,8 @@ A multipurpose object used by several endpoints
 + ValueDate: `2022-06-22T00:00:00Z` (string)
 + Quantity: 700 (number)
 + InvoiceCurrencyCode: GBP (string)
-+ InvoiceRate: 10 (number)
 + InvoiceValue: 7000 (number)
++ VatRateCode: Z (string)
 + VatValue: 140 (number)
 + IsSecure: true (boolean)
 + PaymentMode: P (string)
