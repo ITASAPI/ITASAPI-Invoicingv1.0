@@ -146,6 +146,7 @@ A multipurpose object used by several endpoints
 |AccountLedgerType|Account Ledger Type|`string`|1||Required. `C`, `N` or `K`|
 |ExpenseCode|Expense Code|`string`|7||Required|
 |DepartmentCode|Department Code|`string`|4||Required|
+|AssociateClientCode|Associate Client Code|`string`|10|`Nominal Leg`||
 |AmountInDocumentCurrency|Amount in Document Currency|`decimal`||Can Contain Negative Values|Required|
 |AmountInFunctionalCurrency|Amount in Functional Currency|`decimal`||Can Contain Negative Values||
 |AmountInLocalCurrency|Amount in Invoice Currency|`decimal`||Can Contain Negative Values||
@@ -299,7 +300,6 @@ A multipurpose object used by several endpoints
 + AccountLedgerType: C (required, string)
 + ExpenseCode: MISC (required, string)
 + DepartmentCode: GEN (required, string)
-+ AssociateClientCode: ASSOCCLI.P (string)
 + AmountInDocumentCurrency: `-1.02` (required, number)
 + AmountInFunctionalCurrency: `-1.02` (number)
 + AmountInLocalCurrency: `-1.20` (number)
@@ -314,6 +314,7 @@ A multipurpose object used by several endpoints
 + AccountLedgerType: N (required, string)
 + ExpenseCode: MISC (required, string)
 + DepartmentCode: GEN (required, string)
++ AssociateClientCode: ASSOCCLI.P (string)
 + AmountInDocumentCurrency: 0.84 (required, number)
 + AmountInFunctionalCurrency: 0.84 (number)
 + AmountInLocalCurrency: 1.04 (number)
