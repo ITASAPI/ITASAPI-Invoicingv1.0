@@ -147,8 +147,8 @@ A multipurpose object used by several endpoints
 |ExpenseCode|Expense Code|`string`|7||Required|
 |DepartmentCode|Department Code|`string`|4||Required|
 |AmountInDocumentCurrency|Amount in Document Currency|`decimal`||Can Contain Negative Values|Required|
-|AmountInInvoiceCurrency|Amount in Invoice Currency|`decimal`||Can Contain Negative Values||
 |AmountInFunctionalCurrency|Amount in Functional Currency|`decimal`||Can Contain Negative Values||
+|AmountInLocalCurrency|Amount in Invoice Currency|`decimal`||Can Contain Negative Values||
 |VatCode|Vat Code|`string`|2|||
 |Narrative|Narrative|`string`|30|||
 |SecondaryReference|Secondary Reference|`string`|10|||
@@ -302,8 +302,8 @@ A multipurpose object used by several endpoints
 + DepartmentCode: GEN (required, string)
 + AssociateClientCode: ASSOCCLI.P (string)
 + AmountInDocumentCurrency: `-1.02` (required, number)
-+ AmountInNarrativeCurrency: `-1.20` (number)
 + AmountInFunctionalCurrency: `-1.02` (number)
++ AmountInLocalCurrency: `-1.20` (number)
 + Narrative: STAMPA POSTA 4ONLINE GIU22 (string)
 + SecondaryReference: 3220336229 (string)
 + Memo: Add Memo Here (string)
@@ -316,8 +316,8 @@ A multipurpose object used by several endpoints
 + ExpenseCode: MISC (required, string)
 + DepartmentCode: GEN (required, string)
 + AmountInDocumentCurrency: 0.84 (required, number)
-+ AmountInNarrativeCurrency: 1.04 (number)
 + AmountInFunctionalCurrency: 0.84 (number)
++ AmountInLocalCurrency: 1.04 (number)
 + Narrative: STAMPA POSTA 4ONLINE GIU22 (string)
 + SecondaryReference: 3220336229 (string)
 + Memo: Add Memo Here (string)
@@ -330,8 +330,8 @@ A multipurpose object used by several endpoints
 + ExpenseCode: MISC (required, string)
 + DepartmentCode: GEN (required, string)
 + AmountInDocumentCurrency: 0.18 (required, number)
-+ AmountInNarrativeCurrency: 0.16 (number)
 + AmountInFunctionalCurrency: 0.18 (number)
++ AmountInLocalCurrency: 0.16 (number)
 + VatCode: 22 (string)
 + Narrative: STAMPA POSTA 4ONLINE GIU22 (string)
 + SecondaryReference: 3220336229 (string)
