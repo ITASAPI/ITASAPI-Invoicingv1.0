@@ -31,7 +31,7 @@ Model Header containing AccessToken
 Manual Invoicing Processes
 
 ## Create Manual [/Invoicing/{TradingEntityId}/Manual/Invoice]
-`POST` Manual Ivoice
+`POST` Manual Ivoice (using ProcessId INVMAN01)
 
 ### Create Manual Invoice [POST]
 
@@ -76,7 +76,7 @@ Manual Invoicing Processes
 Trade Invoicing Processes
 
 ## Create Sales [/Invoicing/{TradingEntityId}/Trade/Sales]
-`POST` Sales Invoicing Pilot
+`POST` Sales Invoicing (using ProcessId INVF01)
 
 ### Create Sales Invoice [POST]
 
@@ -88,7 +88,7 @@ Trade Invoicing Processes
 |ValueDate|Value Date|`datetime`|||Required|
 |Quantity|Quantity|`decimal`|||Required|
 |InvoiceCurrencyCode|Invoice Currency Code|`string`|3||Required|
-|InvoiceValue|Invoice Value|`decimal`|||Required|
+|ProceedsOfGoods|Proceeds of Goods|`decimal`|||Required|
 |VatRateCode|Vat Rate Code|`string`|2||Required|
 |VatValue|VAT Value|`decimal`|||Required|
 |InvoiceAccountCode|Invoice Account Code|`string`|10||Required|
@@ -98,7 +98,7 @@ Trade Invoicing Processes
 |ClientReference|Client Reference|`string`|25|||
 |Narrative|Narrative|`string`|30|||
 |AuthoriseForPosting|Authorise For Posting|`boolean`||||
-|Costs|see <b><a href="/#reference/data-object-definitions/cost/cost">Cost</a></b> object|[array] of `object`||||
+|Costs|see <b><a href="/#reference/data-object-definitions/cost/cost">Cost</a></b> object|[array] of `object`|||Additions to the invoice in Invoice Ccy|
 
 <hr />
 
@@ -169,11 +169,8 @@ A multipurpose object used by several endpoints.
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
 |CostCode|Cost Code|`string`|8||Required|
-|CurrencyCode|Currency Code|`string`|3||Required|
 |ExpenseCode|Expense Code|`string`|7||Required|
-|SupplierCode|Supplier Code|`string`|10|||
 |CostValueInvoiceCcy|Cost Value in Invoice Ccy|`decimal`||Negative if Payable|Required|
-|CostValueCostCcy|Cost Value in Cost Ccy|`decimal`||Negative if Payable|Required|
 
 
 + Response 200 (application/json; charset=utf-8)
@@ -341,11 +338,8 @@ A multipurpose object used by several endpoints
 
 ## Cost (object)
 + CostCode: QUALITY (required, string)
-+ CurrencyCode: EUR (required, string)
 + ExpenseCode: STOCK (required, string)
-+ SupplierCode: UMTRAD.P (string)
 + CostValueInvoiceCcy: `316.25` (required, number) 
-+ CostValueCostCcy: `400.15` (required, number)
 
 ## CreateInvSales (object)
 + ContractId: S00001.000 (required, string)
@@ -353,7 +347,7 @@ A multipurpose object used by several endpoints
 + ValueDate: `2022-06-22T00:00:00Z` (required, string)
 + Quantity: 700 (required, number)
 + InvoiceCurrencyCode: GBP (required, string)
-+ InvoiceValue: 7000 (required, number)
++ ProceedsOfGoods: 7000 (required, number)
 + VatRateCode: Z (required, string)
 + VatValue: 140 (required, number)
 + InvoiceAccountCode: CLIENT.S (required, string)
