@@ -90,7 +90,7 @@ Trade Invoicing Processes
 |InvoiceCurrencyCode|Invoice Currency Code|`string`|3||Required|
 |ProceedsOfGoods|Proceeds of Goods|`decimal`|||Required|
 |VatRateCode|Vat Rate Code|`string`|2||Required|
-|VatValue|VAT Value|`decimal`|||Required|
+|ProceedsOfGoodsVatValue|VAT Value|`decimal`|||Required|
 |InvoiceAccountCode|Invoice Account Code|`string`|10||Required|
 |IsSecure|Is Secure|`boolean`||||
 |PaymentModeCode|Payment Mode Code|`string`|1|||
@@ -349,7 +349,7 @@ A multipurpose object used by several endpoints
 + InvoiceCurrencyCode: GBP (required, string)
 + ProceedsOfGoods: 7000 (required, number)
 + VatRateCode: Z (required, string)
-+ VatValue: 140 (required, number)
++ ProceedsOfGoodsVatValue: 140 (required, number)
 + InvoiceAccountCode: CLIENT.S (required, string)
 + IsSecure: true (boolean)
 + PaymentModeCode: P (string)
