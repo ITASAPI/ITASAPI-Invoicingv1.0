@@ -149,7 +149,6 @@ A multipurpose object used by several endpoints
 |AssociateClientCode|Associate Client Code|`string`|10|`Nominal Leg`||
 |AmountInDocumentCurrency|Amount in Document Currency|`decimal`||Can Contain Negative Values|Required|
 |AmountInFunctionalCurrency|Amount in Functional Currency|`decimal`||Can Contain Negative Values||
-|AmountInLocalCurrency|Amount in Invoice Currency|`decimal`||Can Contain Negative Values||
 |VatCode|Vat Code|`string`|2|||
 |Narrative|Narrative|`string`|30|||
 |SecondaryReference|Secondary Reference|`string`|10|||
@@ -299,7 +298,6 @@ A multipurpose object used by several endpoints
 + DepartmentCode: GEN (required, string)
 + AmountInDocumentCurrency: `-1.02` (required, number)
 + AmountInFunctionalCurrency: `-1.02` (number)
-+ AmountInLocalCurrency: `-1.20` (number)
 + Narrative: STAMPA POSTA 4ONLINE GIU22 (string)
 + SecondaryReference: 3220336229 (string)
 + Memo: Add Memo Here (string)
@@ -314,7 +312,6 @@ A multipurpose object used by several endpoints
 + AssociateClientCode: ASSOCCLI.P (string)
 + AmountInDocumentCurrency: 0.84 (required, number)
 + AmountInFunctionalCurrency: 0.84 (number)
-+ AmountInLocalCurrency: 1.04 (number)
 + Narrative: STAMPA POSTA 4ONLINE GIU22 (string)
 + SecondaryReference: 3220336229 (string)
 + Memo: Add Memo Here (string)
@@ -328,7 +325,6 @@ A multipurpose object used by several endpoints
 + DepartmentCode: GEN (required, string)
 + AmountInDocumentCurrency: 0.18 (required, number)
 + AmountInFunctionalCurrency: 0.18 (number)
-+ AmountInLocalCurrency: 0.16 (number)
 + VatCode: 22 (string)
 + Narrative: STAMPA POSTA 4ONLINE GIU22 (string)
 + SecondaryReference: 3220336229 (string)
