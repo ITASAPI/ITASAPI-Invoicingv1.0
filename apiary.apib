@@ -136,7 +136,7 @@ Trade Invoicing Processes
 Trade Locking Processes
 
 ## Create Trade Lock [/Locking/{TradingEntityId}/Trade/Lock]
-`POST` Trade Lock
+`POST` Trade Lock (lock lasts 60 seconds)
 
 ### Create Trade Lock [POST]
 
@@ -152,7 +152,9 @@ Trade Locking Processes
 <b>Response Data</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
+|Locked|Has Locked|`boolean`||||
 |LockId|Lock Id|`string`||||
+|LockExpiryTime|Lock Expiry Time|`datetime`||||
 
 + Parameters
     + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
@@ -179,7 +181,7 @@ Trade Locking Processes
     + Attributes (405 Response)
 
 ## Refresh Trade Lock [/Locking/{TradingEntityId}/Trade/Refresh/{LockId}]
-`PUT` Refresh Trade Lock
+`PUT` Refresh Trade Lock (refresh trade lock for another 60 seconds)
 
 ### Refresh Trade Lock [PUT]
 
@@ -199,11 +201,13 @@ None.
 <b>Response Data</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
+|Locked|Has Locked|`boolean`||||
 |LockId|Lock Id|`string`||||
+|LockExpiryTime|Lock Expiry Time|`datetime`||||
 
 + Parameters
     + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
-    + ContractId (required, string `jt_TRAD_P00001`)
+    + LockId (required, string `jt_TRAD_P00001`)
 
 + Request (application/json)
     + Header
@@ -230,10 +234,10 @@ None.
 + Response 405 (application/json; charset=utf-8)
     + Attributes (405 Response)
 
-## Unlock Trade Lock [/Locking/{TradingEntityId}/Trade/Unlock/{LockId}]
-`PUT` Unlock Trade Lock
+## Remove Trade Lock [/Locking/{TradingEntityId}/Trade/Remove/{LockId}]
+`PUT` Remove Trade Lock
 
-### Unlock Trade Lock [PUT]
+### Remove Trade Lock [PUT]
 
 <b>URI Parameters</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
@@ -251,11 +255,13 @@ None.
 <b>Response Data</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
+|Locked|Has Locked|`boolean`||||
 |LockId|Lock Id|`string`||||
+|LockExpiryTime|Lock Expiry Time|`datetime`||||
 
 + Parameters
     + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
-    + ContractId (required, string `jt_TRAD_P00001`)
+    + LockId (required, string `jt_TRAD_P00001`)
 
 + Request (application/json)
     + Header
@@ -270,7 +276,7 @@ None.
 
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
-        + Data (LockResponse)
+        + Data (LockRemoveResponse)
         + Response (200 UpdateResponse)
 
 + Response 400 (application/json; charset=utf-8)
@@ -427,7 +433,7 @@ A multipurpose object used by several endpoints
 
 ## 404 ErrorMessageDetailMessage (object)
 + Severity: Warning (string)
-+ Message: `API5068 - Data : No records found.` (string)
++ Message: `API5095 - Data : No records found.` (string)
 
 
 ## 405 Response (object)
@@ -532,5 +538,12 @@ A multipurpose object used by several endpoints
 + UserName: JSMITH (string)
 + PCName: JSMITH-PC (string)
 
-## LockResponse (object)
+## LockRemoveResponse (object)
++ Locked: false (boolean)
 + LockId: jt_TRAD_P00001 (string)
++ LockExpiryTime: `1900-01-01T00:00:00Z` (string)
+
+## LockResponse (object)
++ Locked: true (boolean)
++ LockId: jt_TRAD_P00001 (string)
++ LockExpiryTime: `2023-01-16T17:47:31Z` (string)
