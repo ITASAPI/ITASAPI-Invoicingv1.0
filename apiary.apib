@@ -5,13 +5,13 @@ VERSION: 1.0
 # ITAS Invoicing 1.0
 
 <br />
-<strong>Release notes</strong> (XX<sup>st</sup> February 2023.)
+<strong>Release notes</strong> (01<sup>st</sup> May 2023.)
 
 ## New Endpoints
 
 <ul>
+<li>Journal <b>Manual</b>: Create Manual Journal,<a href="/#reference/manual/create-manual-journal"> Link</a></li>
 <li>Invoicing <b>Manual</b>: Create Manual Invoicing,<a href="/#reference/invoicing/create-manual"> Link</a></li>
-<li>Journal <b>Manual</b>: List Vat Sequences,<a href="/#reference/reference-data/vat-sequence-list"> Link</a></li>
 <li>Invoicing <b>Trade</b>: Create Sales Invoicing Pilot,<a href="/#reference/invoicing/create-sales"> Link</a></li>
 <li>Invoicing <b>Trade Locking</b>: Create Trade Lock,<a href="/#reference/invoicing/create-manual"> Link</a></li>
 <li>Invoicing <b>Reference Data</b>: List Vat Sequences,<a href="/#reference/reference-data/vat-sequence-list"> Link</a></li>
@@ -41,7 +41,7 @@ Manual Processes
 <b>Request Body</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
-|DocumentBody|see <b><a href="/#reference/data-object-definitions/documentbody/documentdetails">Invoice Document Body</a></b> object|`object`|||Required|
+|DocumentBody|see <b><a href="/#reference/data-object-definitions/invoicedocumentbody">Invoice Document Body</a></b> object|`object`|||Required|
 |AccountDetails|see <b><a href="/#reference/data-object-definitions/accountdetails">Account Details</a></b> object|[array] of `object`|||Required|
 
 <hr />
@@ -83,7 +83,7 @@ Manual Processes
 <b>Request Body</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
-|DocumentBody|see <b><a href="/#reference/data-object-definitions/documentbody/documentdetails">Journal Document Body</a></b> object|`object`|||Required|
+|DocumentBody|see <b><a href="/#reference/data-object-definitions/journaldocumentbody">Journal Document Body</a></b> object|`object`|||Required|
 |AccountDetails|see <b><a href="/#reference/data-object-definitions/accountdetails">Account Details</a></b> object|[array] of `object`|||Required|
 
 <hr />
@@ -420,9 +420,9 @@ A multipurpose object used by several endpoints.
 + Attributes (Cost)
 
 
-## InvoiceDocumentBody [/InvoiceDocumentBody]
+## Invoice Document Body [/InvoiceDocumentBody]
 A multipurpose object used by several endpoints
-### InvoiceDocumentBody[GET]
+### Invoice Document Body[GET]
 
 
 |Property|Description|Type|Max Length|Notes|Constraint|
@@ -442,9 +442,9 @@ A multipurpose object used by several endpoints
 + Response 200 (application/json; charset=utf-8)
 + Attributes (InvoiceDocumentBody)
 
-## JournalDocumentBody [/JournalDocumentBody]
+## Journal Document Body [/JournalDocumentBody]
 A multipurpose object used by several endpoints
-### JournalDocumentBody[GET]
+### Journal Document Body[GET]
 
 
 |Property|Description|Type|Max Length|Notes|Constraint|
@@ -557,6 +557,32 @@ A multipurpose object used by several endpoints
 ## accessToken (object)
 + Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg 
 
+## AccountDetailsClientJournalIn (object)
++ AccountCode: RECACC.P (required, string)
++ AccountLedgerType: C (required, string)
++ ExpenseCode: MISC (required, string)
++ DepartmentCode: GEN (required, string)
++ AmountInDocumentCurrency: `-1.02` (required, number)
++ AmountInFunctionalCurrency: `-1.02` (number)
++ Narrative: STAMPA POSTA 4ONLINE GIU22 (string)
++ SecondaryReference: 3220336229 (string)
++ Memo: Add Memo Here (string)
++ FreeField: 0123456789 (string)
++ PersonalInits: RDG (string)
+
+## AccountDetailsClientJournalOut (object)
++ AccountCode: POSTEIT.P (required, string)
++ AccountLedgerType: C (required, string)
++ ExpenseCode: MISC (required, string)
++ DepartmentCode: GEN (required, string)
++ AmountInDocumentCurrency: `1.02` (required, number)
++ AmountInFunctionalCurrency: `1.02` (number)
++ Narrative: STAMPA POSTA 4ONLINE GIU22 (string)
++ SecondaryReference: 3220336229 (string)
++ Memo: Add Memo Here (string)
++ FreeField: 0123456789 (string)
++ PersonalInits: RDG (string)
+
 ## AccountDetailsClient (object)
 + AccountCode: POSTEIT.P (required, string)
 + AccountLedgerType: C (required, string)
@@ -627,7 +653,7 @@ A multipurpose object used by several endpoints
 
 ## CreateManualJournal (object)
 + DocumentBody (required, JournalDocumentBody)
-+ AccountDetails (required, array [AccountDetailsClient, AccountDetailsVat, AccountDetailsNominal])
++ AccountDetails (required, array [AccountDetailsClientJournalOut, AccountDetailsClientJournalIn])
 
 
 ## InvoiceDocumentBody (object)
